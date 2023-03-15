@@ -13,6 +13,19 @@
 /*          * mouse
 /*                                                              */
 
+
+
+const calculatorDisplay = document.querySelector('.display');
+const numberButtons = document.querySelectorAll('.numbers div');
+
+
+function resetCalculator() {
+    let displayValue = 0;
+    calculatorDisplay.innerText = displayValue;
+}
+
+resetCalculator();
+
 function add(a, b) {
     return a + b;
 }
@@ -48,11 +61,9 @@ function operate(a, b, operator) {
     return result;
 }
 
-console.log(add(3, 4));
-console.log(subtract(3, 4));
-console.log(multiply(3, 4));
-console.log(divide(3, 4));
-console.log(operate(3, 4, '+'));
-console.log(operate(3, 4, '-'));
-console.log(operate(3, 4, '*'));
-console.log(operate(3, 4, '/'));
+numberButtons.forEach(numberButton => {
+    numberButton.addEventListener('click', e => {
+        calculatorDisplay.innerText += numberButton.innerText;
+    });
+
+});
