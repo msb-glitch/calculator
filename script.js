@@ -65,13 +65,9 @@ numberButtons.forEach(numberButton => {
     numberButton.addEventListener('click', e => {
         if (displayValue === 0) {
             calculatorDisplay.innerText = numberButton.innerText;
-            
-            
         }
         else {
             calculatorDisplay.innerText += numberButton.innerText;
-            
-            
         }
         displayValue = parseFloat(calculatorDisplay.innerText);
         console.log(displayValue);
