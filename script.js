@@ -75,25 +75,23 @@ numberButtons.forEach(numberButton => {
         }
         displayValue = parseFloat(calculatorDisplay.innerText);
         console.log(displayValue);
-        // NEED TO ADD DECIMAL AND PLUS/NEGATIVE FUNCTION
         
     });
 
 });
 
-decimalButton.addEventListener('click', e=> {
-    if(Number.isInteger(displayValue) && !calculatorDisplay.innerText.includes('.')){
+decimalButton.addEventListener('click', e => {
+    if (Number.isInteger(displayValue) && !calculatorDisplay.innerText.includes('.')) {
         // displayValue is an integer, so can use decimal
         calculatorDisplay.innerText += '.';
     }
-    else{
+    else {
         // displayValue already has decimal, so can't add decimal
-        
     }
-    
-    
 })
 
-posnegButton.addEventListener('click', e=> {
+posnegButton.addEventListener('click', e => {
+    // NEED TO GET posneg BUTTON WORKING
     console.log('posneg pushed');
+
 })
