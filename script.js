@@ -13,46 +13,46 @@
 /*          * mouse
 /*                                                              */
 
-function add(a,b){
+function add(a, b) {
     return a + b;
 }
 
-function subtract(a,b){
+function subtract(a, b) {
     return a - b;
 }
 
-function multiply(a,b){
+function multiply(a, b) {
     return a * b;
 }
 
-function divide(a,b){
+function divide(a, b) {
     return a / b;
 }
 
-function operate(a,b,operator){
+function operate(a, b, operator) {
     let result;
-    switch (operator){
+    switch (operator) {
         case '+':
-            result = add(a,b);
+            result = add(a, b);
             break;
         case '-':
-            result = subtract(a,b);
+            result = subtract(a, b);
             break;
         case '*':
-            result = multiply(a,b);
+            result = multiply(a, b);
             break;
         case '/':
-            result = divide(a,b);
+            result = divide(a, b);
             break;
     }
     return result;
 }
 
-console.log(add(3,4));
-console.log(subtract(3,4));
-console.log(multiply(3,4));
-console.log(divide(3,4));
-console.log(operate(3,4,'+'));
-console.log(operate(3,4,'-'));
-console.log(operate(3,4,'*'));
-console.log(operate(3,4,'/'));
+console.log(add(3, 4));
+console.log(subtract(3, 4));
+console.log(multiply(3, 4));
+console.log(divide(3, 4));
+console.log(operate(3, 4, '+'));
+console.log(operate(3, 4, '-'));
+console.log(operate(3, 4, '*'));
+console.log(operate(3, 4, '/'));
