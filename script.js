@@ -72,6 +72,8 @@ numberButtons.forEach(numberButton => {
         displayValue = parseFloat(calculatorDisplay.innerText);
         console.log(displayValue);
         // NEED TO ADD DECIMAL AND PLUS/NEGATIVE FUNCTION
+        // USE Number.isInteger(value) to see if can use decimal
     });
 
 });
+
