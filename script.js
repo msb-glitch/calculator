@@ -21,6 +21,8 @@ const decimalButton = document.querySelector('.decimal');
 const posnegButton = document.querySelector('.posneg');
 
 let displayValue = 0;
+let testPositiveValue = 10;
+let testNegativeValue = -10;
 
 function resetCalculator() {
     displayValue = 0;
@@ -75,7 +77,7 @@ numberButtons.forEach(numberButton => {
         }
         displayValue = parseFloat(calculatorDisplay.innerText);
         console.log(displayValue);
-        
+
     });
 
 });
@@ -91,7 +93,8 @@ decimalButton.addEventListener('click', e => {
 })
 
 posnegButton.addEventListener('click', e => {
-    // NEED TO GET posneg BUTTON WORKING
-    console.log('posneg pushed');
-
+    displayValue = -displayValue;
+    calculatorDisplay.innerText = displayValue;
+    console.log(displayValue);
 })
+
