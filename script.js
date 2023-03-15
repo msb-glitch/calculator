@@ -16,7 +16,9 @@
 
 
 const calculatorDisplay = document.querySelector('.display');
-const numberButtons = document.querySelectorAll('.numbers div');
+const numberButtons = document.querySelectorAll('.number');
+const decimalButton = document.querySelector('.decimal');
+
 let displayValue = 0;
 
 function resetCalculator() {
