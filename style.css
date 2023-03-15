@@ -4,3 +4,27 @@
      padding: 0;
      outline: none;
  }
+
+ .content{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+ }
+ .calculator{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 1em;
+    height: 400px;
+    width: 300px;
+ }
+ .display{
+    border: 1px solid yellow;
+    background: black;
+    color: white;
+    padding: 1em;
+ }
