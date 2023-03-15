@@ -17,10 +17,10 @@
 
 const calculatorDisplay = document.querySelector('.display');
 const numberButtons = document.querySelectorAll('.numbers div');
-
+let displayValue = 0;
 
 function resetCalculator() {
-    let displayValue = 0;
+    displayValue = 0;
     calculatorDisplay.innerText = displayValue;
 }
 
@@ -63,7 +63,19 @@ function operate(a, b, operator) {
 
 numberButtons.forEach(numberButton => {
     numberButton.addEventListener('click', e => {
-        calculatorDisplay.innerText += numberButton.innerText;
+        if (displayValue === 0) {
+            calculatorDisplay.innerText = numberButton.innerText;
+            
+            
+        }
+        else {
+            calculatorDisplay.innerText += numberButton.innerText;
+            
+            
+        }
+        displayValue = parseFloat(calculatorDisplay.innerText);
+        console.log(displayValue);
+        // NEED TO ADD DECIMAL AND PLUS/NEGATIVE FUNCTION
     });
 
 });
