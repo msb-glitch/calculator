@@ -106,6 +106,22 @@ operatorButtons.forEach(operatorButton => {
     operatorButton.addEventListener('click', e => {
         firstNumber = parseFloat(calculatorDisplay.innerText);
         let operator = operatorButton.innerText;
-        console.log(firstNumber + operator);
+        calculatorDisplay.innerText = 0;
+        displayValue = 0;
+        console.log(firstNumber + operator + secondNumber);
     })
 })
+
+/* operator logic
+click operator
+store current number in one variable
+store operator
+zero display for next number
+get next number
+click operator
+store second number in operator
+do operation
+store result as new first number
+display result
+wait for operator or new number
+*/
