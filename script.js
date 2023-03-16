@@ -19,10 +19,14 @@ const calculatorDisplay = document.querySelector('.display');
 const numberButtons = document.querySelectorAll('.number');
 const decimalButton = document.querySelector('.decimal');
 const posnegButton = document.querySelector('.posneg');
+const operatorButtons = document.querySelectorAll('.operators div');
 
 let displayValue = 0;
 let testPositiveValue = 10;
 let testNegativeValue = -10;
+
+let firstNumber = 0;
+let secondNumber = 0;
 
 function resetCalculator() {
     displayValue = 0;
@@ -98,3 +102,10 @@ posnegButton.addEventListener('click', e => {
     console.log(displayValue);
 })
 
+operatorButtons.forEach(operatorButton => {
+    operatorButton.addEventListener('click', e => {
+        firstNumber = parseFloat(calculatorDisplay.innerText);
+        let operator = operatorButton.innerText;
+        console.log(firstNumber + operator);
+    })
+})
