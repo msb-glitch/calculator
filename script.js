@@ -27,6 +27,7 @@ let testNegativeValue = -10;
 
 let firstNumber = 0;
 let secondNumber = 0;
+let operator = '';
 
 function resetCalculator() {
     displayValue = 0;
@@ -105,7 +106,9 @@ posnegButton.addEventListener('click', e => {
 operatorButtons.forEach(operatorButton => {
     operatorButton.addEventListener('click', e => {
         firstNumber = parseFloat(calculatorDisplay.innerText);
-        let operator = operatorButton.innerText;
+        if (operator === '' || operator === '=') {
+            operator = operatorButton.innerText;
+        }
         calculatorDisplay.innerText = 0;
         displayValue = 0;
         console.log(firstNumber + operator + secondNumber);
