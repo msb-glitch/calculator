@@ -140,6 +140,7 @@ operatorButtons.forEach(operatorButton => {
             secondNumber = parseFloat(calculatorDisplay.innerText);
 
         }
+        // don't always want to calculate on operator press
         calcResult = operate(firstNumber, secondNumber, operator);
         firstNumber = calcResult;
         updateTestArea();
