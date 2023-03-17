@@ -25,12 +25,22 @@ let displayValue = 0;
 let testPositiveValue = 10;
 let testNegativeValue = -10;
 
-let firstNumber = 0;
-let secondNumber = 0;
-let operator = '';
+let firstNumber = null;
+let secondNumber = null;
+let operator = null;
+let calcResult = null;
+
+/* testarea */
+const testAreaFirstNumber = document.querySelector('.testarea .firstnumber');
+const testAreaSecondNumber = document.querySelector('.testarea .secondnumber');
+const testAreaOperator = document.querySelector('.testarea .operator');
+const testAreaCalcResult = document.querySelector('.testarea .calcresult');
 
 function resetCalculator() {
     displayValue = 0;
+    firstNumber = null;
+    secondNumber = null;
+    operator = null;
     calculatorDisplay.innerText = displayValue.toString();
 }
 
@@ -67,6 +77,8 @@ function operate(a, b, operator) {
         case '/':
             result = divide(a, b);
             break;
+        case '=':
+            break;
     }
     return result;
 }
@@ -81,6 +93,7 @@ numberButtons.forEach(numberButton => {
             calculatorDisplay.innerText += numberButton.innerText;
         }
         displayValue = parseFloat(calculatorDisplay.innerText);
+
         console.log(displayValue);
 
     });
@@ -100,21 +113,40 @@ decimalButton.addEventListener('click', e => {
 posnegButton.addEventListener('click', e => {
     displayValue = -displayValue;
     calculatorDisplay.innerText = displayValue;
+
     console.log(displayValue);
 })
 
 operatorButtons.forEach(operatorButton => {
     operatorButton.addEventListener('click', e => {
-        firstNumber = parseFloat(calculatorDisplay.innerText);
-        if (operator === '' || operator === '=') {
+
+        if (operator === '=') {
+        }
+        else {
             operator = operatorButton.innerText;
         }
-        calculatorDisplay.innerText = 0;
+
+        if (calcResult === null) {
+            firstNumber = parseFloat(calculatorDisplay.innerText);
+
+        }
+        else if (operator != '=') {
+            secondNumber = parseFloat(calculatorDisplay.innerText);
+
+        }
+        calcResult = operate(firstNumber, secondNumber, operator);
+        firstNumber = calcResult;
+        updateTestArea();
         displayValue = 0;
-        console.log(firstNumber + operator + secondNumber);
+
     })
 })
-
+function updateTestArea() {
+    testAreaFirstNumber.innerText = `firstNumber: ${firstNumber}`;
+    testAreaSecondNumber.innerText = `secondNumber: ${secondNumber}`;
+    testAreaOperator.innerText = `operator: ${operator}`;
+    testAreaCalcResult.innerText = `calcResult: ${calcResult}`;
+}
 /* operator logic
 click operator
 store current number in one variable
