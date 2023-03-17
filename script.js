@@ -93,7 +93,13 @@ numberButtons.forEach(numberButton => {
             calculatorDisplay.innerText += numberButton.innerText;
         }
         displayValue = parseFloat(calculatorDisplay.innerText);
-
+        if(operator === null){
+            firstNumber = displayValue;
+        }
+        else{
+            secondNumber = displayValue;
+        }
+        updateTestArea();
         console.log(displayValue);
 
     });

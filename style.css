@@ -62,3 +62,12 @@
     padding: 1em;
     text-align: center;
  }
+
+ .testarea{
+    margin-top: 2em;
+    border: 1px solid red;
+    padding: 2em;
+ }
+ .testarea div{
+    margin-bottom: 1em;
+ }
