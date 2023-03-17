@@ -43,7 +43,7 @@
      margin-top: 2em;
      cursor: pointer;
  }
- .operators{
+ .operatorbuttons{
     display: grid;
      grid-template-columns: repeat(1, 1fr);
      gap: 10px;
@@ -57,7 +57,7 @@
     text-align: center;
  }
 
- .operators>div{
+ .operatorbuttons>div{
     border: 1px solid red;
     padding: 1em;
     text-align: center;

@@ -19,7 +19,7 @@ const calculatorDisplay = document.querySelector('.display');
 const numberButtons = document.querySelectorAll('.number');
 const decimalButton = document.querySelector('.decimal');
 const posnegButton = document.querySelector('.posneg');
-const operatorButtons = document.querySelectorAll('.operators div');
+const operatorButtons = document.querySelectorAll('.operator');
 
 let displayValue = 0;
 let testPositiveValue = 10;
@@ -41,7 +41,7 @@ function resetCalculator() {
     firstNumber = null;
     secondNumber = null;
     operator = null;
-    calculatorDisplay.innerText = displayValue.toString();
+    calculatorDisplay.textContent = displayValue.toString();
 }
 
 resetCalculator();
@@ -85,14 +85,14 @@ function operate(a, b, operator) {
 
 numberButtons.forEach(numberButton => {
     numberButton.addEventListener('click', e => {
-        if (displayValue === 0 && !calculatorDisplay.innerText.includes('.')) {
+        if (displayValue === 0 && !calculatorDisplay.textContent.includes('.')) {
             // check if displayValue is 0 or is `0.` 
-            calculatorDisplay.innerText = numberButton.innerText;
+            calculatorDisplay.textContent = numberButton.textContent;
         }
         else {
-            calculatorDisplay.innerText += numberButton.innerText;
+            calculatorDisplay.textContent += numberButton.textContent;
         }
-        displayValue = parseFloat(calculatorDisplay.innerText);
+        displayValue = parseFloat(calculatorDisplay.textContent);
         if(operator === null){
             firstNumber = displayValue;
         }
@@ -107,9 +107,9 @@ numberButtons.forEach(numberButton => {
 });
 
 decimalButton.addEventListener('click', e => {
-    if (Number.isInteger(displayValue) && !calculatorDisplay.innerText.includes('.')) {
+    if (Number.isInteger(displayValue) && !calculatorDisplay.textContent.includes('.')) {
         // displayValue is an integer, so can use decimal
-        calculatorDisplay.innerText += '.';
+        calculatorDisplay.textContent += '.';
     }
     else {
         // displayValue already has decimal, so can't add decimal
@@ -118,7 +118,7 @@ decimalButton.addEventListener('click', e => {
 
 posnegButton.addEventListener('click', e => {
     displayValue = -displayValue;
-    calculatorDisplay.innerText = displayValue;
+    calculatorDisplay.textContent = displayValue;
 
     console.log(displayValue);
 })
@@ -129,15 +129,15 @@ operatorButtons.forEach(operatorButton => {
         if (operator === '=') {
         }
         else {
-            operator = operatorButton.innerText;
+            operator = operatorButton.textContent;
         }
 
         if (calcResult === null) {
-            firstNumber = parseFloat(calculatorDisplay.innerText);
+            firstNumber = parseFloat(calculatorDisplay.textContent);
 
         }
         else if (operator != '=') {
-            secondNumber = parseFloat(calculatorDisplay.innerText);
+            secondNumber = parseFloat(calculatorDisplay.textContent);
 
         }
         // don't always want to calculate on operator press
@@ -149,10 +149,10 @@ operatorButtons.forEach(operatorButton => {
     })
 })
 function updateTestArea() {
-    testAreaFirstNumber.innerText = `firstNumber: ${firstNumber}`;
-    testAreaSecondNumber.innerText = `secondNumber: ${secondNumber}`;
-    testAreaOperator.innerText = `operator: ${operator}`;
-    testAreaCalcResult.innerText = `calcResult: ${calcResult}`;
+    testAreaFirstNumber.textContent = `firstNumber: ${firstNumber}`;
+    testAreaSecondNumber.textContent = `secondNumber: ${secondNumber}`;
+    testAreaOperator.textContent = `operator: ${operator}`;
+    testAreaCalcResult.textContent = `calcResult: ${calcResult}`;
 }
 /* operator logic
 click operator
