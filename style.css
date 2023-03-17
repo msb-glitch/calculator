@@ -51,6 +51,9 @@
      margin-top: 2em;
      cursor: pointer;
  }
+ .operatorbuttons .selected{
+    background: yellow;
+ }
  .numbers>div{
     border: 1px solid red;
     padding: 1em;

@@ -20,6 +20,7 @@ const numberButtons = document.querySelectorAll('.number');
 const decimalButton = document.querySelector('.decimal');
 const posnegButton = document.querySelector('.posneg');
 const operatorButtons = document.querySelectorAll('.operator');
+const equalButton = document.querySelector('.equalbutton');
 
 let displayValue = 0;
 let testPositiveValue = 10;
@@ -75,7 +76,12 @@ function operate(a, b, operator) {
             result = multiply(a, b);
             break;
         case '/':
-            result = divide(a, b);
+            if (secondNumber === 0 || secondNumber === null){
+                console.log('error: cannot divid by zero');
+            }
+            else{
+                result = divide(a, b);
+            }
             break;
         case '=':
             break;
@@ -125,29 +131,16 @@ posnegButton.addEventListener('click', e => {
 
 operatorButtons.forEach(operatorButton => {
     operatorButton.addEventListener('click', e => {
-
-        if (operator === '=') {
-        }
-        else {
-            operator = operatorButton.textContent;
-        }
-
-        if (calcResult === null) {
-            firstNumber = parseFloat(calculatorDisplay.textContent);
-
-        }
-        else if (operator != '=') {
-            secondNumber = parseFloat(calculatorDisplay.textContent);
-
-        }
-        // don't always want to calculate on operator press
-        calcResult = operate(firstNumber, secondNumber, operator);
-        firstNumber = calcResult;
+        operator = operatorButton.textContent;
+        operatorButtons.forEach(f => f.classList.remove('selected'));
+        e.target.classList.toggle('selected');
         updateTestArea();
-        displayValue = 0;
-
     })
 })
+
+
+
+
 function updateTestArea() {
     testAreaFirstNumber.textContent = `firstNumber: ${firstNumber}`;
     testAreaSecondNumber.textContent = `secondNumber: ${secondNumber}`;
