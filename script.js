@@ -36,6 +36,7 @@ const testAreaFirstNumber = document.querySelector('.testarea .firstnumber');
 const testAreaSecondNumber = document.querySelector('.testarea .secondnumber');
 const testAreaOperator = document.querySelector('.testarea .operator');
 const testAreaCalcResult = document.querySelector('.testarea .calcresult');
+const testAreaDisplayValue = document.querySelector('.testarea .displayvalue');
 
 function resetCalculator() {
     displayValue = 0;
@@ -76,10 +77,10 @@ function operate(a, b, operator) {
             result = multiply(a, b);
             break;
         case '/':
-            if (secondNumber === 0 || secondNumber === null){
+            if (secondNumber === 0 || secondNumber === null) {
                 console.log('error: cannot divid by zero');
             }
-            else{
+            else {
                 result = divide(a, b);
             }
             break;
@@ -99,10 +100,10 @@ numberButtons.forEach(numberButton => {
             calculatorDisplay.textContent += numberButton.textContent;
         }
         displayValue = parseFloat(calculatorDisplay.textContent);
-        if(operator === null){
+        if (operator === null) {
             firstNumber = displayValue;
         }
-        else{
+        else {
             secondNumber = displayValue;
         }
         updateTestArea();
@@ -134,18 +135,27 @@ operatorButtons.forEach(operatorButton => {
         operator = operatorButton.textContent;
         operatorButtons.forEach(f => f.classList.remove('selected'));
         e.target.classList.toggle('selected');
+        calculatorDisplay.textContent = '0';
+        displayValue = 0;
         updateTestArea();
     })
 })
 
-
+equalButton.addEventListener('click', e => {
+    let result = operate(firstNumber,secondNumber,operator);
+    
+    displayValue = parseFloat(result);
+    firstNumber = displayValue;
+    console.log(result);
+    updateTestArea();
+})
 
 
 function updateTestArea() {
     testAreaFirstNumber.textContent = `firstNumber: ${firstNumber}`;
     testAreaSecondNumber.textContent = `secondNumber: ${secondNumber}`;
     testAreaOperator.textContent = `operator: ${operator}`;
-    testAreaCalcResult.textContent = `calcResult: ${calcResult}`;
+    testAreaDisplayValue.textContent = `displayValue: ${displayValue}`;
 }
 /* operator logic
 click operator
