@@ -22,6 +22,7 @@ const decimalButton = document.querySelector('.decimal');
 const posnegButton = document.querySelector('.posneg');
 const operatorButtons = document.querySelectorAll('.operator');
 const equalButton = document.querySelector('.equalbutton');
+const clearButton = document.querySelector('.clearbutton');
 
 
 
@@ -162,6 +163,9 @@ equalButton.addEventListener('click', e => {
     updateTestArea();
 })
 
+clearButton.addEventListener('click', e => {
+    console.log('clear');
+})
 
 function updateTestArea() {
     testAreaFirstNumber.textContent = `firstNumber: ${firstNumber}`;

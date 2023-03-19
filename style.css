@@ -48,11 +48,12 @@
  }
 
  .clearbutton {
-    border: 1px solid red;
+     border: 1px solid red;
      padding: 1em;
      text-align: center;
      flex: 0 1 100%;
      margin-top: 1em;
+     cursor: pointer;
  }
 
  .operatorbuttons {
