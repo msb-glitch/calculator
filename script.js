@@ -16,7 +16,7 @@
 
 
 const calculatorActiveArea = document.querySelector('.display .activearea');
-const calculatorCurrentOperationArea = document.querySelector('.display .currentoperation');
+const currentOperationArea = document.querySelector('.display .currentoperation');
 const numberButtons = document.querySelectorAll('.number');
 const decimalButton = document.querySelector('.decimal');
 const posnegButton = document.querySelector('.posneg');
@@ -47,7 +47,9 @@ function resetCalculator() {
     firstNumber = null;
     secondNumber = null;
     operator = null;
+    calcResult = null;
     calculatorActiveArea.textContent = displayValue;
+    updateTestArea();
 }
 
 resetCalculator();
@@ -96,8 +98,8 @@ function operate(a, b, operator) {
 
 numberButtons.forEach(numberButton => {
     numberButton.addEventListener('click', e => {
-        if (calculatorActiveArea.textContent === '0' && !calculatorActiveArea.textContent.includes('.')) {
-            // check if displayValue is 0 or is `0.` 
+        if ((calculatorActiveArea.textContent === '0' && !calculatorActiveArea.textContent.includes('.')) || (calcResult != null && calcResult === firstNumber)) {
+            // check if displayValue is 0 or is not `0.` 
             calculatorActiveArea.textContent = numberButton.textContent;
         }
         else {
@@ -143,7 +145,8 @@ operatorButtons.forEach(operatorButton => {
         } 
         else {
             secondNumber = parseFloat(calculatorActiveArea.textContent);
-        }       
+        } 
+        showCurrentOperation();      
         updateTestArea();
 
     })
@@ -154,18 +157,32 @@ equalButton.addEventListener('click', e => {
         secondNumber = parseFloat(calculatorActiveArea.textContent);
     }
     let result = operate(firstNumber,secondNumber,operator);
+    showCurrentOperation();
     operatorButtons.forEach(f => f.classList.remove('selected'));
     operator = null;
-    result = parseFloat(result);
-    calcResult = result;
-    calculatorActiveArea.textContent = result;
-    firstNumber = result;
+
+    calcResult = parseFloat(result);
+    
+    calculatorActiveArea.textContent = calcResult;
+    firstNumber = calcResult;
     updateTestArea();
 })
 
 clearButton.addEventListener('click', e => {
-    console.log('clear');
+    resetCalculator();
 })
+
+function showCurrentOperation(){
+    if(firstNumber){
+        currentOperationArea.textContent = firstNumber;
+    }
+    if(operator){
+        currentOperationArea.textContent += ` ${operator} `;
+    }
+    if(secondNumber){
+        currentOperationArea.textContent += `${secondNumber}`;
+    }
+}
 
 function updateTestArea() {
     testAreaFirstNumber.textContent = `firstNumber: ${firstNumber}`;
