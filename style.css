@@ -20,7 +20,7 @@
      flex-direction: column;
      border: 1px solid black;
      padding: 1em;
-     height: 400px;
+     height: 500px;
      width: 300px;
  }
 
@@ -30,10 +30,12 @@
      color: white;
      padding: 1em;
  }
-.buttons{
-    display: flex;
-    justify-content: space-between;
-}
+
+ .buttons {
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+ }
 
  .numbers {
      display: grid;
@@ -42,35 +44,49 @@
      grid-auto-rows: minmax(30px, auto);
      margin-top: 2em;
      cursor: pointer;
+     flex: 1 0 70%;
  }
- .operatorbuttons{
-    display: grid;
+
+ .clearbutton {
+    border: 1px solid red;
+     padding: 1em;
+     text-align: center;
+     flex: 0 1 100%;
+     margin-top: 1em;
+ }
+
+ .operatorbuttons {
+     display: grid;
      grid-template-columns: repeat(1, 1fr);
      gap: 10px;
      grid-auto-rows: minmax(30px, auto);
      margin-top: 2em;
      cursor: pointer;
- }
- .operatorbuttons .selected{
-    background: yellow;
- }
- .numbers>div{
-    border: 1px solid red;
-    padding: 1em;
-    text-align: center;
+     flex: 1 0 20%;
  }
 
- .operatorbuttons>div{
-    border: 1px solid red;
-    padding: 1em;
-    text-align: center;
+ .operatorbuttons .selected {
+     background: yellow;
  }
 
- .testarea{
-    margin-top: 2em;
-    border: 1px solid red;
-    padding: 2em;
+ .numbers>div {
+     border: 1px solid red;
+     padding: 1em;
+     text-align: center;
  }
- .testarea div{
-    margin-bottom: 1em;
+
+ .operatorbuttons>div {
+     border: 1px solid red;
+     padding: 1em;
+     text-align: center;
+ }
+
+ .testarea {
+     margin-top: 2em;
+     border: 1px solid red;
+     padding: 2em;
+ }
+
+ .testarea div {
+     margin-bottom: 1em;
  }
