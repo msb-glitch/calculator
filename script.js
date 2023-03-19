@@ -22,6 +22,8 @@ const posnegButton = document.querySelector('.posneg');
 const operatorButtons = document.querySelectorAll('.operator');
 const equalButton = document.querySelector('.equalbutton');
 
+
+
 let displayValue = 0;
 let testPositiveValue = 10;
 let testNegativeValue = -10;
@@ -92,22 +94,17 @@ function operate(a, b, operator) {
 
 numberButtons.forEach(numberButton => {
     numberButton.addEventListener('click', e => {
-        if (displayValue === 0 && !calculatorDisplay.textContent.includes('.')) {
+        if (calculatorDisplay.textContent === '0' && !calculatorDisplay.textContent.includes('.')) {
             // check if displayValue is 0 or is `0.` 
             calculatorDisplay.textContent = numberButton.textContent;
         }
         else {
             calculatorDisplay.textContent += numberButton.textContent;
         }
-        displayValue = parseFloat(calculatorDisplay.textContent);
-        if (operator === null) {
-            firstNumber = displayValue;
-        }
-        else {
-            secondNumber = displayValue;
-        }
+        
+        
         updateTestArea();
-        console.log(displayValue);
+        
 
     });
 
@@ -132,21 +129,33 @@ posnegButton.addEventListener('click', e => {
 
 operatorButtons.forEach(operatorButton => {
     operatorButton.addEventListener('click', e => {
+        
         operator = operatorButton.textContent;
         operatorButtons.forEach(f => f.classList.remove('selected'));
         e.target.classList.toggle('selected');
-        calculatorDisplay.textContent = '0';
-        displayValue = 0;
+        
+        if (firstNumber === null){
+            firstNumber = parseFloat(calculatorDisplay.textContent);
+            calculatorDisplay.textContent = '';
+        } 
+        else {
+            secondNumber = parseFloat(calculatorDisplay.textContent);
+        }       
         updateTestArea();
+
+        // maybe move updating firstNumber as displayValue when operator is pressed??
     })
 })
 
 equalButton.addEventListener('click', e => {
+    if (calculatorDisplay.textContent != ''){
+        secondNumber = parseFloat(calculatorDisplay.textContent);
+    }
     let result = operate(firstNumber,secondNumber,operator);
+    operatorButtons.forEach(f => f.classList.remove('selected'));
+    result = parseFloat(result);
+    calcResult = result;
     
-    displayValue = parseFloat(result);
-    firstNumber = displayValue;
-    console.log(result);
     updateTestArea();
 })
 
@@ -155,6 +164,7 @@ function updateTestArea() {
     testAreaFirstNumber.textContent = `firstNumber: ${firstNumber}`;
     testAreaSecondNumber.textContent = `secondNumber: ${secondNumber}`;
     testAreaOperator.textContent = `operator: ${operator}`;
+    testAreaCalcResult.textContent = `calcResult: ${calcResult}`;
     testAreaDisplayValue.textContent = `displayValue: ${displayValue}`;
 }
 /* operator logic
