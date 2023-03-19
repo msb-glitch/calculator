@@ -15,7 +15,8 @@
 
 
 
-const calculatorDisplay = document.querySelector('.display');
+const calculatorActiveArea = document.querySelector('.display .activearea');
+const calculatorCurrentOperationArea = document.querySelector('.display .currentoperation');
 const numberButtons = document.querySelectorAll('.number');
 const decimalButton = document.querySelector('.decimal');
 const posnegButton = document.querySelector('.posneg');
@@ -24,7 +25,7 @@ const equalButton = document.querySelector('.equalbutton');
 
 
 
-let displayValue = 0;
+let displayValue = null;
 let testPositiveValue = 10;
 let testNegativeValue = -10;
 
@@ -41,11 +42,11 @@ const testAreaCalcResult = document.querySelector('.testarea .calcresult');
 const testAreaDisplayValue = document.querySelector('.testarea .displayvalue');
 
 function resetCalculator() {
-    displayValue = 0;
+    displayValue = null;
     firstNumber = null;
     secondNumber = null;
     operator = null;
-    calculatorDisplay.textContent = displayValue.toString();
+    calculatorActiveArea.textContent = displayValue;
 }
 
 resetCalculator();
@@ -94,12 +95,12 @@ function operate(a, b, operator) {
 
 numberButtons.forEach(numberButton => {
     numberButton.addEventListener('click', e => {
-        if (calculatorDisplay.textContent === '0' && !calculatorDisplay.textContent.includes('.')) {
+        if (calculatorActiveArea.textContent === '0' && !calculatorActiveArea.textContent.includes('.')) {
             // check if displayValue is 0 or is `0.` 
-            calculatorDisplay.textContent = numberButton.textContent;
+            calculatorActiveArea.textContent = numberButton.textContent;
         }
         else {
-            calculatorDisplay.textContent += numberButton.textContent;
+            calculatorActiveArea.textContent += numberButton.textContent;
         }
         
         
@@ -111,9 +112,9 @@ numberButtons.forEach(numberButton => {
 });
 
 decimalButton.addEventListener('click', e => {
-    if (Number.isInteger(displayValue) && !calculatorDisplay.textContent.includes('.')) {
+    if (Number.isInteger(displayValue) && !calculatorActiveArea.textContent.includes('.')) {
         // displayValue is an integer, so can use decimal
-        calculatorDisplay.textContent += '.';
+        calculatorActiveArea.textContent += '.';
     }
     else {
         // displayValue already has decimal, so can't add decimal
@@ -121,8 +122,9 @@ decimalButton.addEventListener('click', e => {
 })
 
 posnegButton.addEventListener('click', e => {
+    displayValue = calculatorActiveArea.textContent;
     displayValue = -displayValue;
-    calculatorDisplay.textContent = displayValue;
+    calculatorActiveArea.textContent = displayValue;
 
     console.log(displayValue);
 })
@@ -135,11 +137,11 @@ operatorButtons.forEach(operatorButton => {
         e.target.classList.toggle('selected');
         
         if (firstNumber === null){
-            firstNumber = parseFloat(calculatorDisplay.textContent);
-            calculatorDisplay.textContent = ' ';
+            firstNumber = parseFloat(calculatorActiveArea.textContent);
+            calculatorActiveArea.textContent = ' ';
         } 
         else {
-            secondNumber = parseFloat(calculatorDisplay.textContent);
+            secondNumber = parseFloat(calculatorActiveArea.textContent);
         }       
         updateTestArea();
 
@@ -147,14 +149,15 @@ operatorButtons.forEach(operatorButton => {
 })
 
 equalButton.addEventListener('click', e => {
-    if (calculatorDisplay.textContent != ' '){
-        secondNumber = parseFloat(calculatorDisplay.textContent);
+    if (calculatorActiveArea.textContent != ' '){
+        secondNumber = parseFloat(calculatorActiveArea.textContent);
     }
     let result = operate(firstNumber,secondNumber,operator);
     operatorButtons.forEach(f => f.classList.remove('selected'));
+    operator = null;
     result = parseFloat(result);
     calcResult = result;
-    calculatorDisplay.textContent = result;
+    calculatorActiveArea.textContent = result;
     firstNumber = result;
     updateTestArea();
 })
