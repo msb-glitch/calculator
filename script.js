@@ -141,8 +141,18 @@ operatorButtons.forEach(operatorButton => {
             (firstNumber != null && secondNumber != null)){
             firstNumber = displayValue;
         }
+        else{
+            // not working. Need to get chain of operations and numbers working without equal sign.
+            secondNumber = displayValue;
+            let previousOperator = operatorButton.textContent;
+            displayValue = operate(parseFloat(firstNumber),parseFloat(secondNumber), previousOperator);
+            updateDisplay();
+            
+        }
         operator = operatorButton.textContent;
 
+        //if an operator is already pressed && secondNumber != displayValue
+        //then operate
         updateTestArea();
 
     })
@@ -156,8 +166,9 @@ equalButton.addEventListener('click', e => {
         secondNumber = displayValue;
     }
     displayValue = operate(parseFloat(firstNumber),parseFloat(secondNumber), operator);
+    firstNumber = displayValue;
     updateDisplay();
-
+    
 
     updateTestArea();
 })
