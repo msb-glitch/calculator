@@ -25,11 +25,6 @@ const equalButton = document.querySelector('.equalbutton');
 const clearButton = document.querySelector('.clearbutton');
 
 
-
-let displayValue = 0;
-let testPositiveValue = 10;
-let testNegativeValue = -10;
-
 let firstNumber = null;
 let secondNumber = null;
 let operator = null;
