@@ -98,17 +98,7 @@ function operate(a, b, operator) {
 console.log(calculatorActiveArea.textContent.length);
 numberButtons.forEach(numberButton => {
     numberButton.addEventListener('click', e => {
-        if ((calculatorActiveArea.textContent === '0' && !calculatorActiveArea.textContent.includes('.')) ) {
-            // check if displayValue is 0 or is not `0.` 
-            resetCalculator();
-            calculatorActiveArea.textContent = numberButton.textContent;
-        }
         
-        else {
-            calculatorActiveArea.textContent += numberButton.textContent;
-        }
-
-        console.log(calculatorActiveArea.textContent.length);
         updateTestArea();
 
 
@@ -144,15 +134,7 @@ operatorButtons.forEach(operatorButton => {
         operatorButtons.forEach(f => f.classList.remove('selected'));
         e.target.classList.toggle('selected');
 
-        if (firstNumber === null) {
-            firstNumber = parseFloat(calculatorActiveArea.textContent);
-            calculatorActiveArea.textContent = ' ';
-            secondNumber = null;
-        }
-        else {
-            secondNumber = parseFloat(calculatorActiveArea.textContent);
-        }
-        showCurrentOperation();
+        
         
         updateTestArea();
 
@@ -160,19 +142,12 @@ operatorButtons.forEach(operatorButton => {
 })
 
 equalButton.addEventListener('click', e => {
-    if (calculatorActiveArea.textContent != ' ' || firstNumber === calcResult) {
-        secondNumber = parseFloat(calculatorActiveArea.textContent);
-    }
-    let result = operate(firstNumber, secondNumber, operator);
-    showCurrentOperation();
+    
     operatorButtons.forEach(f => f.classList.remove('selected'));
-    operator = null;
+    
 
-    calcResult = parseFloat(result);
-
-    calculatorActiveArea.textContent = calcResult;
-    firstNumber = calcResult;
-    console.log(`calculatoractivearea = ${calculatorActiveArea.textContent}`);
+    
+    
     
     updateTestArea();
 })
@@ -182,15 +157,7 @@ clearButton.addEventListener('click', e => {
 })
 
 function showCurrentOperation() {
-    if (firstNumber) {
-        currentOperationArea.textContent = firstNumber;
-    }
-    if (operator) {
-        currentOperationArea.textContent += ` ${operator} `;
-    }
-    if (secondNumber) {
-        currentOperationArea.textContent += `${secondNumber}`;
-    }
+    
 }
 
 function updateTestArea() {
