@@ -136,26 +136,26 @@ operatorButtons.forEach(operatorButton => {
         
         if (firstNumber === null){
             firstNumber = parseFloat(calculatorDisplay.textContent);
-            calculatorDisplay.textContent = '';
+            calculatorDisplay.textContent = ' ';
         } 
         else {
             secondNumber = parseFloat(calculatorDisplay.textContent);
         }       
         updateTestArea();
 
-        // maybe move updating firstNumber as displayValue when operator is pressed??
     })
 })
 
 equalButton.addEventListener('click', e => {
-    if (calculatorDisplay.textContent != ''){
+    if (calculatorDisplay.textContent != ' '){
         secondNumber = parseFloat(calculatorDisplay.textContent);
     }
     let result = operate(firstNumber,secondNumber,operator);
     operatorButtons.forEach(f => f.classList.remove('selected'));
     result = parseFloat(result);
     calcResult = result;
-    
+    calculatorDisplay.textContent = result;
+    firstNumber = result;
     updateTestArea();
 })
 
