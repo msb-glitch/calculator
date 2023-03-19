@@ -32,11 +32,15 @@
  }
 .currentoperation{
     background: lightblue;
-
+    height: 1.5em;
+    padding: .5em;
+    color: black;
 }
 
 .activearea{
     background: lightslategray;
+    height: 1.5em;
+    padding: .5em;
 }
  .buttons {
      display: flex;

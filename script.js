@@ -43,12 +43,13 @@ const testAreaCalcResult = document.querySelector('.testarea .calcresult');
 const testAreaDisplayValue = document.querySelector('.testarea .displayvalue');
 
 function resetCalculator() {
-    displayValue = 0;
+    displayValue = null;
     firstNumber = null;
     secondNumber = null;
     operator = null;
     calcResult = null;
     calculatorActiveArea.textContent = displayValue;
+    operatorButtons.forEach(f => f.classList.remove('selected'));
     updateTestArea();
 }
 
@@ -98,7 +99,15 @@ function operate(a, b, operator) {
 console.log(calculatorActiveArea.textContent.length);
 numberButtons.forEach(numberButton => {
     numberButton.addEventListener('click', e => {
-        
+        if ((displayValue === null || displayValue === 0) ||
+            displayValue === firstNumber
+        ) {
+            displayValue = numberButton.textContent;
+        }
+        else{
+            displayValue += numberButton.textContent;
+        }
+        updateDisplay();
         updateTestArea();
 
 
@@ -107,7 +116,7 @@ numberButtons.forEach(numberButton => {
 });
 
 decimalButton.addEventListener('click', e => {
-    if(calculatorActiveArea.textContent === ''){
+    if (calculatorActiveArea.textContent === '') {
         calculatorActiveArea.textContent += '0.';
     }
     else if (!calculatorActiveArea.textContent.includes('.')) {
@@ -130,25 +139,31 @@ posnegButton.addEventListener('click', e => {
 operatorButtons.forEach(operatorButton => {
     operatorButton.addEventListener('click', e => {
 
-        operator = operatorButton.textContent;
+        
         operatorButtons.forEach(f => f.classList.remove('selected'));
         e.target.classList.toggle('selected');
+        if ((firstNumber === null && operator === null)||
+            (firstNumber != null && secondNumber != null)){
+            firstNumber = displayValue;
+        }
+        operator = operatorButton.textContent;
 
-        
-        
         updateTestArea();
 
     })
 })
 
 equalButton.addEventListener('click', e => {
-    
-    operatorButtons.forEach(f => f.classList.remove('selected'));
-    
 
-    
-    
-    
+    operatorButtons.forEach(f => f.classList.remove('selected'));
+
+    if(firstNumber != null){
+        secondNumber = displayValue;
+    }
+    displayValue = operate(parseFloat(firstNumber),parseFloat(secondNumber), operator);
+    updateDisplay();
+
+
     updateTestArea();
 })
 
@@ -157,9 +172,11 @@ clearButton.addEventListener('click', e => {
 })
 
 function showCurrentOperation() {
-    
-}
 
+}
+function updateDisplay() {
+    calculatorActiveArea.textContent = displayValue;
+}
 function updateTestArea() {
     testAreaFirstNumber.textContent = `firstNumber: ${firstNumber}`;
     testAreaSecondNumber.textContent = `secondNumber: ${secondNumber}`;
