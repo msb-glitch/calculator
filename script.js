@@ -115,7 +115,10 @@ numberButtons.forEach(numberButton => {
 });
 
 decimalButton.addEventListener('click', e => {
-    if (Number.isInteger(displayValue) && !calculatorActiveArea.textContent.includes('.')) {
+    if(calculatorActiveArea.textContent === ''){
+        calculatorActiveArea.textContent += '0.';
+    }
+    else if (!calculatorActiveArea.textContent.includes('.')) {
         // displayValue is an integer, so can use decimal
         calculatorActiveArea.textContent += '.';
     }
@@ -191,16 +194,10 @@ function updateTestArea() {
     testAreaCalcResult.textContent = `calcResult: ${calcResult}`;
     testAreaDisplayValue.textContent = `displayValue: ${displayValue}`;
 }
-/* operator logic
-click operator
-store current number in one variable
-store operator
-zero display for next number
-get next number
-click operator
-store second number in operator
-do operation
-store result as new first number
-display result
-wait for operator or new number
+
+
+/*
+IDEAS
+
+Easter Egg: if enter 7734, flip calculator and put flames in background, etc.
 */
