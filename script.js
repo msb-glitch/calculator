@@ -105,10 +105,10 @@ numberButtons.forEach(numberButton => {
         else {
             calculatorActiveArea.textContent += numberButton.textContent;
         }
-        
-        
+
+
         updateTestArea();
-        
+
 
     });
 
@@ -134,35 +134,35 @@ posnegButton.addEventListener('click', e => {
 
 operatorButtons.forEach(operatorButton => {
     operatorButton.addEventListener('click', e => {
-        
+
         operator = operatorButton.textContent;
         operatorButtons.forEach(f => f.classList.remove('selected'));
         e.target.classList.toggle('selected');
-        
-        if (firstNumber === null){
+
+        if (firstNumber === null) {
             firstNumber = parseFloat(calculatorActiveArea.textContent);
             calculatorActiveArea.textContent = ' ';
-        } 
+        }
         else {
             secondNumber = parseFloat(calculatorActiveArea.textContent);
-        } 
-        showCurrentOperation();      
+        }
+        showCurrentOperation();
         updateTestArea();
 
     })
 })
 
 equalButton.addEventListener('click', e => {
-    if (calculatorActiveArea.textContent != ' '){
+    if (calculatorActiveArea.textContent != ' ') {
         secondNumber = parseFloat(calculatorActiveArea.textContent);
     }
-    let result = operate(firstNumber,secondNumber,operator);
+    let result = operate(firstNumber, secondNumber, operator);
     showCurrentOperation();
     operatorButtons.forEach(f => f.classList.remove('selected'));
     operator = null;
 
     calcResult = parseFloat(result);
-    
+
     calculatorActiveArea.textContent = calcResult;
     firstNumber = calcResult;
     updateTestArea();
@@ -172,14 +172,14 @@ clearButton.addEventListener('click', e => {
     resetCalculator();
 })
 
-function showCurrentOperation(){
-    if(firstNumber){
+function showCurrentOperation() {
+    if (firstNumber) {
         currentOperationArea.textContent = firstNumber;
     }
-    if(operator){
+    if (operator) {
         currentOperationArea.textContent += ` ${operator} `;
     }
-    if(secondNumber){
+    if (secondNumber) {
         currentOperationArea.textContent += `${secondNumber}`;
     }
 }
