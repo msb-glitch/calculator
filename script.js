@@ -114,6 +114,7 @@ numberButtons.forEach(numberButton => {
 
 decimalButton.addEventListener('click', e => {
     if (calculatorActiveArea.textContent === '') {
+        // displayValue is blank
         calculatorActiveArea.textContent += '0.';
     }
     else if (!calculatorActiveArea.textContent.includes('.')) {
@@ -145,7 +146,6 @@ operatorButtons.forEach(operatorButton => {
             firstNumber = displayValue;
         }
         else if (firstNumber && operator) {
-            // not working. Need to get chain of operations and numbers working without equal sign.
             secondNumber = displayValue;
 
             displayValue = operate(parseFloat(firstNumber), parseFloat(secondNumber), operator);
@@ -157,8 +157,6 @@ operatorButtons.forEach(operatorButton => {
         }
         operator = operatorButton.textContent;
 
-        //if an operator is already pressed && secondNumber != displayValue
-        //then operate
         updateTestArea();
 
     })
@@ -169,13 +167,14 @@ equalButton.addEventListener('click', e => {
     operatorButtons.forEach(f => f.classList.remove('selected'));
 
     if (operator) {
-        if (firstNumber != null) {
+        if (firstNumber) {
             secondNumber = displayValue;
         }
         displayValue = operate(parseFloat(firstNumber), parseFloat(secondNumber), operator);
         firstNumber = displayValue;
         updateDisplay();
     }
+    
 
     operator = null;
 
@@ -193,7 +192,7 @@ function showCurrentOperation() {
 
 function updateDisplay() {
     if (displayValue.toString().includes('.')) {
-        
+
         displayValue = parseFloat(Number(displayValue).toFixed(8));
     }
     calculatorActiveArea.textContent = displayValue;
