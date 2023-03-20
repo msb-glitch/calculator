@@ -193,8 +193,8 @@ function showCurrentOperation() {
 
 function updateDisplay() {
     if (displayValue.toString().includes('.')) {
-        // need to get rid of trailing zeros
-        displayValue = Number(displayValue).toFixed(8);
+        
+        displayValue = parseFloat(Number(displayValue).toFixed(8));
     }
     calculatorActiveArea.textContent = displayValue;
 }
