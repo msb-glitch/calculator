@@ -30,12 +30,15 @@ let secondNumber = null;
 let operator = null;
 let calcResult = null;
 
+
 /* testarea */
 const testAreaFirstNumber = document.querySelector('.testarea .firstnumber');
 const testAreaSecondNumber = document.querySelector('.testarea .secondnumber');
 const testAreaOperator = document.querySelector('.testarea .operator');
 const testAreaCalcResult = document.querySelector('.testarea .calcresult');
 const testAreaDisplayValue = document.querySelector('.testarea .displayvalue');
+/* end testarea */
+
 
 function resetCalculator() {
     displayValue = null;
@@ -91,7 +94,7 @@ function operate(a, b, operator) {
     }
     return result;
 }
-console.log(calculatorActiveArea.textContent.length);
+
 numberButtons.forEach(numberButton => {
     numberButton.addEventListener('click', e => {
         if ((displayValue === null || displayValue === 0) ||
@@ -104,10 +107,7 @@ numberButtons.forEach(numberButton => {
         }
         updateDisplay();
         updateTestArea();
-
-
     });
-
 });
 
 decimalButton.addEventListener('click', e => {
@@ -185,9 +185,15 @@ clearButton.addEventListener('click', e => {
 })
 
 function showCurrentOperation() {
-
+// to display current operation above activearea
 }
+
+
 function updateDisplay() {
+    if(displayValue.toString().includes('.')){
+        // need to get rid of trailing zeros
+        displayValue = Number(displayValue).toFixed(8);
+    }
     calculatorActiveArea.textContent = displayValue;
 }
 function updateTestArea() {
