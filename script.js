@@ -99,7 +99,7 @@ numberButtons.forEach(numberButton => {
         ) {
             displayValue = numberButton.textContent;
         }
-        else{
+        else {
             displayValue += numberButton.textContent;
         }
         updateDisplay();
@@ -121,6 +121,7 @@ decimalButton.addEventListener('click', e => {
     else {
         // displayValue already has decimal, so can't add decimal
     }
+    displayValue = calculatorActiveArea.textContent;
 })
 
 posnegButton.addEventListener('click', e => {
@@ -134,20 +135,23 @@ posnegButton.addEventListener('click', e => {
 operatorButtons.forEach(operatorButton => {
     operatorButton.addEventListener('click', e => {
 
-        
+
         operatorButtons.forEach(f => f.classList.remove('selected'));
         e.target.classList.toggle('selected');
-        if ((firstNumber === null && operator === null)||
-            (firstNumber != null && secondNumber != null)){
+        if ((firstNumber === null && operator === null) ||
+            (firstNumber && secondNumber && operator === null)) {
             firstNumber = displayValue;
         }
-        else{
+        else if (firstNumber && operator) {
             // not working. Need to get chain of operations and numbers working without equal sign.
             secondNumber = displayValue;
-            let previousOperator = operatorButton.textContent;
-            displayValue = operate(parseFloat(firstNumber),parseFloat(secondNumber), previousOperator);
+
+            displayValue = operate(parseFloat(firstNumber), parseFloat(secondNumber), operator);
+
+            operator = operatorButton.textContent;
             updateDisplay();
-            
+            firstNumber = displayValue;
+
         }
         operator = operatorButton.textContent;
 
@@ -162,13 +166,16 @@ equalButton.addEventListener('click', e => {
 
     operatorButtons.forEach(f => f.classList.remove('selected'));
 
-    if(firstNumber != null){
-        secondNumber = displayValue;
+    if (operator) {
+        if (firstNumber != null) {
+            secondNumber = displayValue;
+        }
+        displayValue = operate(parseFloat(firstNumber), parseFloat(secondNumber), operator);
+        firstNumber = displayValue;
+        updateDisplay();
     }
-    displayValue = operate(parseFloat(firstNumber),parseFloat(secondNumber), operator);
-    firstNumber = displayValue;
-    updateDisplay();
     
+    operator = null;
 
     updateTestArea();
 })
