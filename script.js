@@ -82,8 +82,10 @@ function operate(a, b, operator) {
             result = multiply(a, b);
             break;
         case '/':
-            if (secondNumber === 0 || secondNumber === null) {
-                console.log('error: cannot divid by zero');
+            if (secondNumber === 0 || secondNumber === null || secondNumber === '0') {
+
+                result = 'cannot divide by zero';
+
             }
             else {
                 result = divide(a, b);
@@ -174,7 +176,7 @@ equalButton.addEventListener('click', e => {
         firstNumber = displayValue;
         updateDisplay();
     }
-    
+
     operator = null;
 
     updateTestArea();
@@ -185,12 +187,12 @@ clearButton.addEventListener('click', e => {
 })
 
 function showCurrentOperation() {
-// to display current operation above activearea
+    // to display current operation above activearea
 }
 
 
 function updateDisplay() {
-    if(displayValue.toString().includes('.')){
+    if (displayValue.toString().includes('.')) {
         // need to get rid of trailing zeros
         displayValue = Number(displayValue).toFixed(8);
     }
