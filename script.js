@@ -16,11 +16,12 @@
 
 
 const calculatorActiveArea = document.querySelector('.display .activearea');
-const currentOperationArea = document.querySelector('.display .currentoperation');
+
+
 const numberButtons = document.querySelectorAll('.number');
 const decimalButton = document.querySelector('.decimal');
 const posnegButton = document.querySelector('.posneg');
-const operatorButtons = document.querySelectorAll('.operator');
+const operatorButtons = document.querySelectorAll('.operatorbuttons .operator');
 const equalButton = document.querySelector('.equalbutton');
 const clearButton = document.querySelector('.clearbutton');
 
@@ -41,13 +42,19 @@ const testAreaDisplayValue = document.querySelector('.testarea .displayvalue');
 
 
 function resetCalculator() {
+    //reset values
     displayValue = null;
     firstNumber = null;
     secondNumber = null;
     operator = null;
     calcResult = null;
+
+    //reset ActiveArea display area
     calculatorActiveArea.textContent = displayValue;
+
+    //reset operator buttons
     operatorButtons.forEach(f => f.classList.remove('selected'));
+
     updateTestArea();
 }
 
@@ -144,6 +151,7 @@ operatorButtons.forEach(operatorButton => {
         if ((firstNumber === null && operator === null) ||
             (firstNumber && secondNumber && operator === null)) {
             firstNumber = displayValue;
+            updateDisplay();
         }
         else if (firstNumber && operator) {
             secondNumber = displayValue;
@@ -174,7 +182,7 @@ equalButton.addEventListener('click', e => {
         firstNumber = displayValue;
         updateDisplay();
     }
-    
+
 
     operator = null;
 
@@ -196,6 +204,8 @@ function updateDisplay() {
         displayValue = parseFloat(Number(displayValue).toFixed(8));
     }
     calculatorActiveArea.textContent = displayValue;
+
+
 }
 function updateTestArea() {
     testAreaFirstNumber.textContent = `firstNumber: ${firstNumber}`;

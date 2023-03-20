@@ -36,6 +36,9 @@
     height: 1.5em;
     padding: .5em;
     color: black;
+    display: flex;
+    justify-content: flex-end;
+    
 }
 
 .activearea{
