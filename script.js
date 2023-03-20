@@ -11,10 +11,14 @@
 /* Input: 
 /*          * keyboard
 /*          * mouse
+/*                                                              
+/* Easter eggs:
+/*          * Hell mode                                                     
+/*                                                              
 /*                                                              */
 
 
-
+const fullCalculator = document.querySelector('.calculator');
 const calculatorActiveArea = document.querySelector('.display .activearea');
 
 
@@ -204,9 +208,16 @@ function updateDisplay() {
         displayValue = parseFloat(Number(displayValue).toFixed(8));
     }
     calculatorActiveArea.textContent = displayValue;
-
+    if(displayValue === 7734 || displayValue === '7734'){
+        hellMode();
+    }
 
 }
+
+function hellMode (){
+    fullCalculator.classList.toggle('hell');
+}
+
 function updateTestArea() {
     testAreaFirstNumber.textContent = `firstNumber: ${firstNumber}`;
     testAreaSecondNumber.textContent = `secondNumber: ${secondNumber}`;
