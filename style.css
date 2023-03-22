@@ -52,6 +52,7 @@
      display: flex;
      justify-content: space-between;
      flex-wrap: wrap;
+     gap: 1em;
  }
 
  .numbers {
@@ -70,6 +71,7 @@
      text-align: center;
      flex: 0 1 100%;
      margin-top: 1em;
+     margin-bottom: -2em;
      cursor: pointer;
  }
 
