@@ -38,7 +38,7 @@ let calcResult = null;
 let inHellMode = false;
 
 
-/* testarea */
+/* testarea /
 const testAreaFirstNumber = document.querySelector('.testarea .firstnumber');
 const testAreaSecondNumber = document.querySelector('.testarea .secondnumber');
 const testAreaOperator = document.querySelector('.testarea .operator');
@@ -232,12 +232,15 @@ function hellMode() {
 
 }
 
+
 function updateTestArea() {
+/*
     testAreaFirstNumber.textContent = `firstNumber: ${firstNumber}`;
     testAreaSecondNumber.textContent = `secondNumber: ${secondNumber}`;
     testAreaOperator.textContent = `operator: ${operator}`;
     testAreaCalcResult.textContent = `calcResult: ${calcResult}`;
     testAreaDisplayValue.textContent = `displayValue: ${displayValue}`;
+*/
 }
 
 
