@@ -35,6 +35,8 @@ let secondNumber = null;
 let operator = null;
 let calcResult = null;
 
+let inHellMode = false;
+
 
 /* testarea */
 const testAreaFirstNumber = document.querySelector('.testarea .firstnumber');
@@ -58,7 +60,7 @@ function resetCalculator() {
 
     //reset operator buttons
     operatorButtons.forEach(f => f.classList.remove('selected'));
-
+    updateDisplay();
     updateTestArea();
 }
 
@@ -203,19 +205,31 @@ function showCurrentOperation() {
 
 
 function updateDisplay() {
-    if (displayValue.toString().includes('.')) {
+    if (displayValue) {
+        if (displayValue.toString().includes('.')) {
 
-        displayValue = parseFloat(Number(displayValue).toFixed(8));
+            displayValue = parseFloat(Number(displayValue).toFixed(8));
+        }
     }
     calculatorActiveArea.textContent = displayValue;
-    if(displayValue === 7734 || displayValue === '7734'){
-        hellMode();
-    }
+    hellMode();
+
 
 }
 
-function hellMode (){
-    fullCalculator.classList.add('hell');
+function hellMode() {
+    if (displayValue === 7734 || displayValue === '7734') {
+        inHellMode = true;
+        fullCalculator.classList.add('hell');
+        
+    }
+    else if (inHellMode === true && (displayValue != 7734 || displayValue != '7734')) {
+        inHellMode = false;
+        fullCalculator.classList.remove('hell');
+
+
+    }
+
 }
 
 function updateTestArea() {

@@ -103,6 +103,10 @@
     transform: rotate(180deg);
     transition: transform 2s linear;
 }
+.nothell{
+    transform: rotate(-180deg);
+    transition: transform 2s linear;
+}
 
 
 
