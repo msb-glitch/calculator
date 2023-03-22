@@ -215,7 +215,7 @@ function updateDisplay() {
 }
 
 function hellMode (){
-    fullCalculator.classList.toggle('hell');
+    fullCalculator.classList.add('hell');
 }
 
 function updateTestArea() {

@@ -1,4 +1,6 @@
- * {
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+
+* {
      box-sizing: border-box;
      margin: 0;
      padding: 0;
@@ -29,8 +31,12 @@
      border: 1px solid yellow;
      background: black;
      color: white;
-     padding: 1em;
+     padding: .5em;
+     font-family: 'Squada One', cursive;
+     font-size: 2em;
+     height: 2em;
  }
+
 .currentoperation{
     background: lightblue;
     height: 1.5em;
@@ -41,11 +47,7 @@
     
 }
 
-.activearea{
-    background: lightslategray;
-    height: 1.5em;
-    padding: .5em;
-}
+
  .buttons {
      display: flex;
      justify-content: space-between;
@@ -99,7 +101,7 @@
 
 .hell{
     transform: rotate(180deg);
-    transition: transform 4s linear;
+    transition: transform 2s linear;
 }
 
 
