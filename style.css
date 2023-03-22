@@ -24,7 +24,7 @@
      padding: 1em;
      height: 500px;
      width: 300px;
-     
+     border-radius:3%;
  }
 
  .display {
@@ -53,6 +53,10 @@
      justify-content: space-between;
      flex-wrap: wrap;
      gap: 1em;
+     
+ }
+ .buttons div{
+    border-radius: 10%;
  }
 
  .numbers {
