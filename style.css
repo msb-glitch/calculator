@@ -1,115 +1,128 @@
 @import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Teko:wght@400;700&family=ZCOOL+QingKe+HuangYou&display=swap');
+
 * {
-     box-sizing: border-box;
-     margin: 0;
-     padding: 0;
-     outline: none;
- }
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
 
- .content {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     flex-direction: column;
-     min-height: 100vh;
- }
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
 
- .calculator {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     flex-direction: column;
-     border: 1px solid black;
-     padding: 1em;
-     height: 500px;
-     width: 300px;
-     border-radius:3%;
- }
 
- .display {
-     border: 1px solid yellow;
-     background: black;
-     color: white;
-     padding: .5em;
-     font-family: 'Squada One', cursive;
-     font-size: 2em;
-     height: 2em;
- }
+}
 
-.currentoperation{
+.calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 1em;
+    height: 500px;
+    width: 300px;
+    border-radius: 3%;
+}
+
+.display {
+    border: 1px solid yellow;
+    background: black;
+    color: white;
+    padding: .1em .25em 0 .25em;
+    font-family: 'ZCOOL QingKe HuangYou', sans-serif;
+    font-size: 3em;
+    height: 1.25em;
+    text-align: right;
+}
+
+.currentoperation {
     background: lightblue;
     height: 1.5em;
     padding: .5em;
     color: black;
     display: flex;
     justify-content: flex-end;
-    
+
 }
 
 
- .buttons {
-     display: flex;
-     justify-content: space-between;
-     flex-wrap: wrap;
-     gap: 1em;
-     
- }
- .buttons div{
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1em;
+    font-family: 'Teko', sans-serif;
+    
+
+}
+
+.buttons div {
     border-radius: 10%;
- }
+}
 
- .numbers {
-     display: grid;
-     grid-template-columns: repeat(3, 1fr);
-     gap: 20px;
-     grid-auto-rows: minmax(30px, auto);
-     margin-top: 2em;
-     cursor: pointer;
-     flex: 1 0 70%;
- }
+.numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    grid-auto-rows: minmax(30px, auto);
+    margin-top: 2em;
+    cursor: pointer;
+    flex: 1 0 70%;
+}
 
- .clearbutton {
-     border: 1px solid red;
-     padding: 1em;
-     text-align: center;
-     flex: 0 1 100%;
-     margin-top: 1em;
-     margin-bottom: -2em;
-     cursor: pointer;
- }
+.clearbutton {
+    border: 1px solid red;
+    font-size: 2em;
+    text-align: center;
+    flex: 0 1 100%;
+    margin-bottom: -1em;
+    margin-top: .5em;
+    
+    cursor: pointer;
+}
 
- .operatorbuttons {
-     display: grid;
-     grid-template-columns: repeat(1, 1fr);
-     gap: 10px;
-     grid-auto-rows: minmax(30px, auto);
-     margin-top: 2em;
-     cursor: pointer;
-     flex: 1 0 20%;
- }
+.operatorbuttons {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(30px, auto);
+    margin-top: 2em;
+    cursor: pointer;
+    flex: 1 0 20%;
+}
 
- .operatorbuttons .selected {
-     background: yellow;
- }
+.operatorbuttons .selected {
+    background: yellow;
+}
 
- .numbers>div {
-     border: 1px solid red;
-     padding: 1em;
-     text-align: center;
- }
+.numbers>div {
+    border: 1px solid red;
+    padding-top: .25em;
+    text-align: center;
+    font-size: 2.5em;
+}
 
- .operatorbuttons>div {
-     border: 1px solid red;
-     padding: 1em;
-     text-align: center;
- }
+.operatorbuttons>div {
+    border: 1px solid red;
+    padding-top: .25em;
+    text-align: center;
+    
+    font-size: 2em;
+}
 
-.hell{
+.hell {
     transform: rotate(180deg);
     transition: transform 2s linear;
 }
-.nothell{
+
+.nothell {
     transform: rotate(-180deg);
     transition: transform 2s linear;
 }
@@ -120,13 +133,12 @@
 
 
 
- .testarea {
-     margin-top: 2em;
-     border: 1px solid red;
-     padding: 2em;
- }
+.testarea {
+    margin-top: 2em;
+    border: 1px solid red;
+    padding: 2em;
+}
 
- .testarea div {
-     margin-bottom: 1em;
- }
-
+.testarea div {
+    margin-bottom: 1em;
+}
