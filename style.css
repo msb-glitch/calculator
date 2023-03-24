@@ -18,6 +18,10 @@
 
 
 }
+.head h1{
+    font-family: 'Teko', sans-serif;
+    
+}
 
 .calculator {
     display: flex;
@@ -32,7 +36,7 @@
 }
 
 .display {
-    border: 1px solid yellow;
+    border-radius: 3%;
     background: black;
     color: white;
     padding: .1em .25em 0 .25em;
@@ -78,7 +82,7 @@
 }
 
 .clearbutton {
-    border: 1px solid red;
+    background: darkgray;
     font-size: 2em;
     text-align: center;
     flex: 0 1 100%;
@@ -103,14 +107,14 @@
 }
 
 .numbers>div {
-    border: 1px solid red;
+    background: lightgray;
     padding-top: .25em;
     text-align: center;
     font-size: 2.5em;
 }
 
 .operatorbuttons>div {
-    border: 1px solid red;
+    background: lightsalmon;
     padding-top: .25em;
     text-align: center;
     
