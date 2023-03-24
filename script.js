@@ -9,7 +9,7 @@
 /*          * divide
 /*
 /* Input: 
-/*          * keyboard
+/*          * keyboard  -- not done
 /*          * mouse
 /*                                                              
 /* Easter eggs:
@@ -199,9 +199,7 @@ clearButton.addEventListener('click', e => {
     resetCalculator();
 })
 
-function showCurrentOperation() {
-    // to display current operation above activearea
-}
+
 
 
 function updateDisplay() {
